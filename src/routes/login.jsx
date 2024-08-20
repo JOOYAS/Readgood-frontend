@@ -2,9 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import ErrorMessage from "../components/errorMessage";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
 import { changeLoginState } from "../features/login/loginSlice";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -67,7 +68,6 @@ const Login = () => {
                 {errors.email && (
                     <ErrorMessage message={errors.email.message} />
                 )}
-
                 <label htmlFor="password" className="mt-8 text-2xl">
                     Password
                 </label>
@@ -90,12 +90,20 @@ const Login = () => {
                 {errors.password && (
                     <ErrorMessage message={errors.password.message} />
                 )}
-
                 <input
                     className="py-2 border-2 border-blue-900 bg-blue-500 hover:bg-gradient-to-r from-blue-500 via-blue-100 to-blue-500 active:bg-white mt-8 rounded-lg"
                     type="submit"
                     value="login"
-                />
+                />{" "}
+                <p className="mt-20">
+                    Don&apos;t have an account? then please create one
+                </p>
+                <Link
+                    to={"/signup"}
+                    className="text-center py-2 border-2 border-blue-900  hover:bg-blue-500 hover:text-white mx-auto  w-1/2 rounded-lg"
+                >
+                    Signup
+                </Link>
             </form>
         </div>
     );

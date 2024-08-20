@@ -1,15 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../features/login/loginSlice";
+import { useEffect } from "react";
 
 const Header = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const isloggedin = useSelector((state) => state.login.loggedIn);
     const user = useSelector((state) => state.login.user);
 
-    const logoutHandler= ()=> {
-        dispatch(logout())
-    }
+    useEffect(() => {
+        return () => {};
+    }, [user]);
+    const logoutHandler = () => {
+        dispatch(logout());
+    };
 
     return (
         <>
@@ -70,7 +74,7 @@ const Header = () => {
                         </li>
                     </ul>
                 </nav>
-                {isloggedin ? (
+                {user && user.name ? (
                     <div className="flex items-center justify-center font-semibold text-5xl text-white bg-teal-500 rounded-full size-16 capitalize">
                         {user.name.charAt(0)}
                     </div>

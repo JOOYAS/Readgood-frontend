@@ -12,18 +12,23 @@ const Root = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL);
+
         axios
-            .get(`{import.meta.env.VITE_API_BASE_URL}/auth0/verify`, {
+            .get(`${import.meta.env.VITE_API_BASE_URL}/auth0/verify`, {
                 withCredentials: true,
             })
             .then((res) => {
+                console.log("checking...................................");
                 if (!res.data) {
                     dispatch(logout());
                 } else {
+                    const userData = res.data;
+                    console.log(userData);
                     dispatch(
                         changeLoginState({
                             loggedIn: true,
-                            user: res.data,
+                            user: userData,
                         })
                     );
                 }
