@@ -13,7 +13,9 @@ const Root = () => {
 
     useEffect(() => {
         axios
-            .get("`{import.meta.env.VITE_API_BASE_URL}/auth0/verify`, { withCredentials: true })
+            .get(`{import.meta.env.VITE_API_BASE_URL}/auth0/verify`, {
+                withCredentials: true,
+            })
             .then((res) => {
                 if (!res.data) {
                     dispatch(logout());

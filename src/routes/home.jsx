@@ -4,10 +4,14 @@ import AuthorPhotoButton from "../components/authorPhotoButton";
 import { useSelector } from "react-redux";
 
 export async function loader() {
-    const bookresponse = await fetch(`${import.meta.env.VITE_API_BASE_URL}/books`
+    const bookresponse = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/books`
+    );
     const books = await bookresponse.json();
 
-    const authorresponse = await fetch(`${import.meta.env.VITE_API_BASE_URL}/authors`);
+    const authorresponse = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/authors`
+    );
     const authors = await authorresponse.json();
 
     return { books, authors };
