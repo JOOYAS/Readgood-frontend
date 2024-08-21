@@ -12,8 +12,6 @@ const Root = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL);
-
         axios
             .get(`${import.meta.env.VITE_API_BASE_URL}/auth0/verify`, {
                 withCredentials: true,

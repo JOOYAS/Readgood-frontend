@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router";
 import BookCard from "../components/bookCard";
 
 export async function loader() {
-    const res = await fetch("http://localhost:3000/books");
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/books`);
     const books = await res.json();
 
     return { books };
